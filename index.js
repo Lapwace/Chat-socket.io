@@ -1,11 +1,23 @@
 const express = require("express")
 const app = express()
+const cors = require("cors")
+const ytdl = require("ytdl-core")
 const path = require("path")
 app.use(express.static(path.join(__dirname)))
 const http = require("http").createServer(app)
 const io = require("socket.io")(http)
 app.get("/", (req, res) => {res.sendFile(__dirname + "/index.html")})
+app.use(cors())
 let how_online = 0
+
+app.get("/download", (req,res) =>{
+    var URL = req.query.URL
+    res.header("Content-Disposition", 'attachment; filename=video.mp4')
+
+    ytdl(URL,{
+        format: 'mp4'
+    }).pipe(res)
+})
 
 io.on("connection", (socket) =>{
 
@@ -31,9 +43,13 @@ io.on("connection", (socket) =>{
         io.to(socket.id).emit("delete_message", msg)
     })
 
-    socket.on("youtube_player", (link) =>{
-        io.to(socket.id).emit("youtube_edite", link)
+    socket.on("youtube_player", (link, urlYT) =>{
+        io.to(socket.id).emit("youtube_edite", link, urlYT)
     })
+
+    socket.on("downloader", (urlYT) =>{
+    })
+
 })
 
 http.listen(3000, () => {

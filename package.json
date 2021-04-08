@@ -9,7 +9,9 @@
   "author": "Raitos",
   "license": "ISC",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.17.1",
-    "socket.io": "^4.0.1"
+    "socket.io": "^4.0.1",
+    "ytdl-core": "^4.5.0"
   }
 }

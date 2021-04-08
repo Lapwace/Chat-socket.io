@@ -36,6 +36,7 @@ window.onload = () => {
         const videoID = document.querySelector("#youtube_url")
         let sec_youtube = 0
         notsec_youtube = String(videoID.value)
+        urlYT = "https://www.youtube.com/watch?v="+videoID.value
         link = "https://www.youtube.com/embed/"+videoID.value+"?loop=1&playlist="+videoID.value
         for (i = 0; i < notsec_youtube.length; i++){
             if (notsec_youtube[i] == "<" ){
@@ -43,14 +44,19 @@ window.onload = () => {
             }
         }
         if (sec_youtube == 0 && notsec_youtube != "" ){  
-        socket.emit("youtube_player", link)
+        socket.emit("youtube_player", link, urlYT)
         }
     })
 
-    socket.on("youtube_edite", (link) =>{
-        document.querySelector("#ytplayer").innerHTML = `<iframe id="player_youtube" type="text/html" src="${link}" frameborder="0"></iframe>`
-    })
+    socket.on("youtube_edite", (link, urlYT) =>{
+        document.querySelector("#ytplayer").innerHTML = `<iframe id="player_youtube" type="text/html" src="${link}" frameborder="0"></iframe><br><button id="download">Download</button>`
+        document.querySelector("#download").addEventListener("click", (e) => {
+            e.preventDefault()
+            window.location.href = `http://localhost:3000/download?URL=${urlYT}`
+            socket.emit("downloader", urlYT)
+        })
 
+    })
     socket.on("how_online", (how_online) => {
         document.querySelector("#how_online").innerHTML = `<p>Currently online : ${how_online}`
     })

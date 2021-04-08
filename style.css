@@ -32,10 +32,13 @@ main{
     background-color: rgba(255, 255, 255, 0.050);
 }
 
+
 #ytplayer{
     margin: 10px;
     margin-top: 0;
     padding: 10px;
+    padding-bottom: 0;
+    padding-top: 0;
     border-bottom: 1px solid orange;
     border-left: 1px solid orange;
     border-right: 1px solid orange;
@@ -59,7 +62,7 @@ main{
 
 }
 
-#youtube_button, #channel_send{
+#youtube_button, #channel_send, #download{
     border-radius: 2px;
     flex: 1;
     padding: 5px;
@@ -100,14 +103,14 @@ main{
 }
 
 
-#channel_send:active, #youtube_button:active{
+#channel_send:active, #youtube_button:active, #download:active{
     transition: 0.1s;
     box-shadow: 0px 0px 3px 3px #656565;
     -moz-box-shadow: 0px 0px 3px 3px #656565;
 
 }
 
-#channel_send:focus, #youtube_button{
+#channel_send:focus, #youtube_button:focus, #download:focus{
     outline: none;
 }
 
