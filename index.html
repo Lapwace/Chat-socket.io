@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OneForAllChat</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <aside>
+        <div id="title_name"></div>
+        <form id="channel_entry">
+            <input type="text" id="channel_text" placeholder="Channel name" autocomplete="off" value ="OneForAllChat"><button id="channel_send">GO</button>
+        </form>
+        <div id="how_online"></div>
+    </aside>
+    <main>
+        <div id="messages"></div>
+        <form id="send_form">
+            <input type="text" id="name" placeholder="Nickname" autocomplete="off">
+            <input type="text" id="message" autocomplete="off">
+            <button id="send">Send</button>
+        </form>
+    </main>
+    <aside>
+        <div id="youtube_entry"><input type="text" id="youtube_url" placeholder="Youtube video ID" autocomplete="off"><button id="youtube_button">Play</button></div>
+        <div id="ytplayer"></div>
+    </aside>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
