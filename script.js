@@ -92,10 +92,14 @@ window.onload = () => {
         }  
         if(msg.name != "" && notsec_message != "" && sec_send == 0){
             document.querySelector("#messages").innerHTML = `<p>${msg.name} : ${msg.message}</p>` + document.querySelector("#messages").innerHTML
+
         }
     })
     
-    socket.on("delete_message", () => {
+    socket.on("delete_message", (msg, on_channel) => {
         document.querySelector("#message").value = ""
+        current_channel = on_channel
+        inj_pannel_how(current_online, current_channel)
+
     })
 }

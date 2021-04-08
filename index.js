@@ -43,8 +43,9 @@ io.on("connection", (socket) =>{
     })
 
     socket.on("chat_message", (msg) => {
+        current_channel = io.sockets.adapter.rooms.get(msg.room).size
         io.in(msg.room).emit("received_message", msg)
-        io.to(socket.id).emit("delete_message", msg)
+        io.to(socket.id).emit("delete_message", msg, current_channel)
     })
 
     socket.on("youtube_player", (link, urlYT) =>{
