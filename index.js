@@ -22,10 +22,10 @@ app.get("/download", (req,res) =>{
 })
 
 io.on("connection", (socket) =>{
-
     how_online = how_online + 1
     io.emit("how_online", how_online)
     io.to(socket.id).emit("video_inj")
+
 
     socket.on("disconnect", () => {
         how_online = how_online - 1
@@ -37,7 +37,8 @@ io.on("connection", (socket) =>{
         if(!check_channel) {
             socket.leave(current)
             socket.join(room)
-            io.to(socket.id).emit("name_room", room)
+            current_channel = io.sockets.adapter.rooms.get(room).size
+            io.to(socket.id).emit("name_room", room, current_channel)
         }
     })
 
@@ -48,9 +49,6 @@ io.on("connection", (socket) =>{
 
     socket.on("youtube_player", (link, urlYT) =>{
         io.to(socket.id).emit("youtube_edite", link, urlYT)
-    })
-
-    socket.on("downloader", (urlYT) =>{
     })
 
 })

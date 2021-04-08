@@ -1,9 +1,14 @@
 const socket = io()
 let current_room = "OneForAllChat"
+let current_online = 0
+let current_channel = 0
 
 socket.on("connect", () =>{
     socket.emit("enter_room", "OneForAllChat")
 })
+function inj_pannel_how(totalonline, channelonline){
+    document.querySelector("#how_online").innerHTML = `<p>Currently online : ${totalonline}<p> Currently on channel : ${channelonline}`
+}
 
 window.onload = () => {
       
@@ -53,19 +58,21 @@ window.onload = () => {
         document.querySelector("#download").addEventListener("click", (e) => {
             e.preventDefault()
             window.location.href = `http://localhost:3000/download?URL=${urlYT}`
-            socket.emit("downloader", urlYT)
         })
     })
-
+    
     socket.on("video_inj", () => {
         document.querySelector("#ytplayer").innerHTML = `<iframe id="player_youtube" type="text/html" src="https://www.youtube.com/embed/jNQXAC9IVRw" frameborder="0"></iframe><br><button id="download">Download</button>`
     })
 
     socket.on("how_online", (how_online) => {
-        document.querySelector("#how_online").innerHTML = `<p>Currently online : ${how_online}`
+        current_online = how_online
+        inj_pannel_how(current_online, current_channel)
     })
 
-    socket.on("name_room", (room) => {
+    socket.on("name_room", (room, on_channel) => {
+        current_channel = on_channel
+        inj_pannel_how(current_online, current_channel)
         document.querySelector("#title_name").innerHTML = `${room}`
     })
 
