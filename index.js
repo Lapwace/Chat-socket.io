@@ -15,7 +15,9 @@ app.get("/download", (req,res) =>{
     res.header("Content-Disposition", 'attachment; filename=video.mp4')
 
     ytdl(URL,{
-        format: 'mp4'
+        format: 'mp4',
+        quality: 'highestvideo',
+        quality: 'highestaudio'
     }).pipe(res)
 })
 
