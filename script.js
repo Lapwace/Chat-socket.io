@@ -55,8 +55,12 @@ window.onload = () => {
             window.location.href = `http://localhost:3000/download?URL=${urlYT}`
             socket.emit("downloader", urlYT)
         })
-
     })
+
+    socket.on("video_inj", () => {
+        document.querySelector("#ytplayer").innerHTML = `<iframe id="player_youtube" type="text/html" src="https://www.youtube.com/embed/jNQXAC9IVRw" frameborder="0"></iframe><br><button id="download">Download</button>`
+    })
+
     socket.on("how_online", (how_online) => {
         document.querySelector("#how_online").innerHTML = `<p>Currently online : ${how_online}`
     })

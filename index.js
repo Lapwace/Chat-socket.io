@@ -23,6 +23,7 @@ io.on("connection", (socket) =>{
 
     how_online = how_online + 1
     io.emit("how_online", how_online)
+    io.to(socket.id).emit("video_inj")
 
     socket.on("disconnect", () => {
         how_online = how_online - 1
