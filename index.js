@@ -37,5 +37,5 @@ io.on("connection", (socket) =>{
 })
 
 http.listen(3000, () => {
-    console.log("Le serveur est lancé")
+    console.log("Server start")
 })
