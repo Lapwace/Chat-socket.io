@@ -6,10 +6,10 @@ let current_channel = 0
 socket.on("connect", () =>{
     socket.emit("enter_room", "OneForAllChat")
 })
+
 function inj_pannel_how(totalonline, channelonline){
     document.querySelector("#how_online").innerHTML = `<p>Currently online : ${totalonline}<p> Currently on channel : ${channelonline}`
 }
-
 
 window.onload = () => {
 
@@ -55,7 +55,7 @@ window.onload = () => {
             }
         }
         if (sec_youtube == 0 && notsec_youtube != "" ){  
-        socket.emit("youtube_player", link, urlYT)
+            socket.emit("youtube_player", link, urlYT)
         }
     })
 
@@ -109,19 +109,17 @@ window.onload = () => {
     document.querySelector("#messages").addEventListener("click", (e) =>{
         data = e.target.outerHTML
         data = data.split("<div")[0]
-        if(data)
-        {   
+        if(data){   
             data = data.split('userid="')[1]
             data = data.split('">')[0]
             socket.emit("private_go", data, current_room)
-
         }
 })
     
     socket.on("delete_message", (msg, on_channel) => {
         document.querySelector("#message").value = ""
         if(!msg){
-        document.querySelector("#messages").innerHTML = "" 
+            document.querySelector("#messages").innerHTML = "" 
         }
         current_channel = on_channel
         inj_pannel_how(current_online, current_channel)

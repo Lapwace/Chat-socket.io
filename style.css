@@ -1,22 +1,22 @@
-*{
+* {
     background-color: rgb(20, 20, 20);
     color: gold;
 }
 
-body{
+body {
     display: flex;
 }
 
-aside{
+aside {
     flex: 1;
     border-radius: 2px;
 }
 
-main{
+main {
     flex: 4;
 }
 
-#private_box{
+#private_box {
     text-align: center;
     border: 1px solid orange;
     border-radius: 2px;
@@ -27,7 +27,7 @@ main{
 }
 
 
-#youtube_entry{
+#youtube_entry {
     margin-left: 10px;
     padding: 5px;
     border-top: 1px solid orange;
@@ -40,7 +40,7 @@ main{
 }
 
 
-#ytplayer{
+#ytplayer {
     margin-left: 10px;
     padding: 10px;
     padding-bottom: 0;
@@ -57,7 +57,7 @@ main{
 }
 
 
-#youtube_url, #channel_text{
+#youtube_url, #channel_text {
     border-radius: 2px;
     flex: 4;
     padding: 5px;
@@ -68,7 +68,7 @@ main{
 
 }
 
-#mp_button{
+#mp_button {
     border: 1px solid orange;
     background-color: rgba(255, 255, 255, 0.050);
     cursor: pointer;
@@ -86,7 +86,7 @@ main{
     cursor: pointer;
 }
 
-#title_name{
+#title_name {
     border-top: 1px solid orange;
     border-left: 1px solid orange;
     border-bottom: 1px solid orange;
@@ -98,7 +98,7 @@ main{
     background-color: rgba(255, 255, 255, 0.050);
 }
 
-#channel_entry{
+#channel_entry {
     text-align: center;
     border: 1px solid orange;
     border-bottom-left-radius: 2px;
@@ -111,23 +111,23 @@ main{
     display: flex;
 }
 
-#channel_text:focus, #youtube_url:focus{
+#channel_text:focus, #youtube_url:focus {
     outline: none;
 }
 
 
-#channel_send:active, #youtube_button:active, #download:active, #private_button:active, #mp_button:active{
+#channel_send:active, #youtube_button:active, #download:active, #private_button:active, #mp_button:active {
     transition: 0.1s;
     box-shadow: 0px 0px 3px 3px #656565;
     -moz-box-shadow: 0px 0px 3px 3px #656565;
 
 }
 
-#channel_send:focus, #youtube_button:focus, #download:focus, #private_button:focus, #mp_button:focus{
+#channel_send:focus, #youtube_button:focus, #download:focus, #private_button:focus, #mp_button:focus {
     outline: none;
 }
 
-#how_online{
+#how_online {
     text-align: center;
     border: 1px solid orange;
     border-radius: 2px;
@@ -136,7 +136,7 @@ main{
     background-color: rgba(255, 255, 255, 0.050);
 }
 
-#how_online p{
+#how_online p {
     text-align: left;
     border: 1px solid orange;
     border-radius: 2px;
@@ -155,7 +155,7 @@ main{
     
 }
 
-#message_box{
+#message_box {
     margin: 0;
     padding: 10px;
     border-bottom: 1px solid orange;
@@ -164,11 +164,11 @@ main{
     letter-spacing: 0.75px;
     font-size: 15px;
 }
-#messages :nth-child(odd){
+#messages :nth-child(odd) {
     background-color: rgba(0, 0, 0 , 0.100);    
 }
 
-#message{
+#message {
     border-radius: 2px;
     flex: 30;
     padding: 10px;
@@ -179,11 +179,11 @@ main{
     color: white;
 }
 
-#message:focus{
+#message:focus {
     outline: none;
 }
 
-#name{
+#name {
     border-radius: 2px;
     flex: 2;
     padding: 5px;
@@ -193,11 +193,11 @@ main{
     
 }
 
-#name:focus{
+#name:focus {
     outline: none;
 }
 
-#send{
+#send {
     border-radius: 2px;
     flex: 1;
     padding: 5px;
@@ -206,11 +206,11 @@ main{
     cursor: pointer;
 }
 
-#send:focus{
+#send:focus {
     outline: none;
 }
 
-#send:active{
+#send:active {
     transition: 0.1s;
     box-shadow: 0px 0px 3px 3px #656565;
     -moz-box-shadow: 0px 0px 3px 3px #656565;

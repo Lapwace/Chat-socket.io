@@ -9,7 +9,6 @@ const io = require("socket.io")(http)
 app.get("/", (req, res) => {res.sendFile(__dirname + "/index.html")})
 app.use(cors())
 let how_online = 0
-let current_channel = 
 
 app.get("/download", (req,res) =>{
     var URL = req.query.URL
@@ -26,8 +25,6 @@ io.on("connection", (socket) =>{
     how_online++
     io.emit("how_online", how_online)
     io.to(socket.id).emit("video_inj")
-
-
 
     socket.on("disconnect", () => {
         how_online = how_online - 1
