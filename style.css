@@ -16,6 +16,17 @@ main{
     flex: 4;
 }
 
+#private_box{
+    text-align: center;
+    border: 1px solid orange;
+    border-radius: 2px;
+    margin: 10px;
+    padding: 5px;
+    background-color: rgba(255, 255, 255, 0.050);
+    display: flex;
+}
+
+
 #youtube_entry{
     margin-left: 10px;
     padding: 5px;
@@ -57,7 +68,15 @@ main{
 
 }
 
-#youtube_button, #channel_send, #download{
+#mp_button{
+    border: 1px solid orange;
+    background-color: rgba(255, 255, 255, 0.050);
+    cursor: pointer;
+    margin-right: 5px;
+    font-size: 10px;
+}
+
+#youtube_button, #channel_send, #download, #private_button {
     border-radius: 2px;
     flex: 1;
     padding: 5px;
@@ -97,14 +116,14 @@ main{
 }
 
 
-#channel_send:active, #youtube_button:active, #download:active{
+#channel_send:active, #youtube_button:active, #download:active, #private_button:active, #mp_button:active{
     transition: 0.1s;
     box-shadow: 0px 0px 3px 3px #656565;
     -moz-box-shadow: 0px 0px 3px 3px #656565;
 
 }
 
-#channel_send:focus, #youtube_button:focus, #download:focus{
+#channel_send:focus, #youtube_button:focus, #download:focus, #private_button:focus, #mp_button:focus{
     outline: none;
 }
 
@@ -136,7 +155,7 @@ main{
     
 }
 
-#messages p{
+#message_box{
     margin: 0;
     padding: 10px;
     border-bottom: 1px solid orange;

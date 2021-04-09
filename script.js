@@ -10,7 +10,13 @@ function inj_pannel_how(totalonline, channelonline){
     document.querySelector("#how_online").innerHTML = `<p>Currently online : ${totalonline}<p> Currently on channel : ${channelonline}`
 }
 
+
 window.onload = () => {
+
+    document.querySelector("#private_button").addEventListener("click", (e) =>{
+        e.preventDefault()
+        socket.emit("private_req", current_room)
+    })
       
     document.querySelector("#send_form").addEventListener("click", (e) => {
         e.preventDefault()
@@ -70,17 +76,18 @@ window.onload = () => {
         inj_pannel_how(current_online, current_channel)
     })
 
-    socket.on("name_room", (room, on_channel) => {
+    socket.on("name_room", (room, on_channel, label) => {
         current_channel = on_channel
+        current_room = room
         inj_pannel_how(current_online, current_channel)
-        document.querySelector("#title_name").innerHTML = `${room}`
+        document.querySelector("#title_name").innerHTML = `${label}`
     })
 
     socket.on("change_current", (on_channel) => {
         current_channel = on_channel
         inj_pannel_how(current_online, current_channel)
     })
-    socket.on("received_message", (msg) => {
+    socket.on("received_message", (msg, id) => {
         let sec_send = 0
         let notsec_message = String(msg.message)
         for (i = 0; i < notsec_message.length; i++){
@@ -95,15 +102,28 @@ window.onload = () => {
             }
         }  
         if(msg.name != "" && notsec_message != "" && sec_send == 0){
-            document.querySelector("#messages").innerHTML = `<p>${msg.name} : ${msg.message}</p>` + document.querySelector("#messages").innerHTML
-
+            document.querySelector("#messages").innerHTML = `<p id="message_box" userID="${id}">${msg.name} : ${msg.message}</p>` + document.querySelector("#messages").innerHTML
         }
     })
+
+    document.querySelector("#messages").addEventListener("click", (e) =>{
+        data = e.target.outerHTML
+        data = data.split("<div")[0]
+        if(data)
+        {   
+            data = data.split('userid="')[1]
+            data = data.split('">')[0]
+            socket.emit("private_go", data, current_room)
+
+        }
+})
     
     socket.on("delete_message", (msg, on_channel) => {
         document.querySelector("#message").value = ""
+        if(!msg){
+        document.querySelector("#messages").innerHTML = "" 
+        }
         current_channel = on_channel
         inj_pannel_how(current_online, current_channel)
-
     })
 }
